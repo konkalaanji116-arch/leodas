@@ -73,8 +73,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-black tracking-tight text-white text-base md:text-lg">
-                  Thalapathy <span className="text-red-400">&amp; Pets</span>
+                <span className="font-black tracking-tight text-white text-base md:text-xl">
+                  THALAPATHY
                 </span>
                 <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#800517] text-white font-mono font-bold border border-red-500/40">
                   2-OPT

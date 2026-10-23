@@ -134,8 +134,8 @@ export default function App() {
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-xl">👑</span>
-              <span className="font-extrabold text-sm tracking-tight text-white">
-                Thalapathy <span className="text-red-400">Quiz Challenge</span>
+              <span className="font-black text-base tracking-widest text-white font-serif">
+                THALAPATHY
               </span>
             </div>
             <button
@@ -259,9 +259,10 @@ export default function App() {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#800517]" />
             <span className="text-neutral-400 font-medium flex items-center gap-1.5">
-              <span>Thalapathy Vijay &amp; Cute Doggie Edition</span>
-              <span>🐾</span>
-              <span className="text-amber-400 font-mono">#800517</span>
+              <span className="font-bold text-white tracking-wider">THALAPATHY</span>
+              <span>&bull;</span>
+              <span>2-Option Friendship Challenge</span>
+              <span className="text-amber-400 font-mono text-[11px]">#800517</span>
             </span>
           </div>
           <p className="italic text-neutral-400">
