@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Quiz": {
+      "title": "Quiz",
+      "description": "A 2-option friendship quiz created by a user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the quiz"
+        },
+        "creatorName": {
+          "type": "string",
+          "description": "Name of the friend who created the quiz",
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the quiz",
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Creation timestamp in milliseconds"
+        },
+        "questions": {
+          "type": "array",
+          "description": "List of 2-option questions"
+        }
+      },
+      "required": ["id", "creatorName", "title", "createdAt", "questions"]
+    },
+    "QuizAttempt": {
+      "title": "QuizAttempt",
+      "description": "A friend's completed attempt and score on a quiz",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the attempt"
+        },
+        "quizId": {
+          "type": "string",
+          "description": "ID of the quiz taken"
+        },
+        "friendName": {
+          "type": "string",
+          "description": "Name of the friend who took the quiz",
+          "maxLength": 100
+        },
+        "score": {
+          "type": "number",
+          "description": "Number of questions answered correctly"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total number of questions"
+        },
+        "answers": {
+          "type": "array",
+          "description": "List of answered question details"
+        },
+        "completedAt": {
+          "type": "number",
+          "description": "Timestamp when the attempt finished"
+        }
+      },
+      "required": ["id", "quizId", "friendName", "score", "total", "completedAt"]
+    }
+  },
+  "firestore": {
+    "/quizzes/{quizId}": {
+      "schema": {
+        "$ref": "#/entities/Quiz"
+      },
+      "description": "Collection of all customized 2-option quizzes"
+    },
+    "/attempts/{attemptId}": {
+      "schema": {
+        "$ref": "#/entities/QuizAttempt"
+      },
+      "description": "Collection of all friend quiz attempts and scores"
+    }
+  }
+}

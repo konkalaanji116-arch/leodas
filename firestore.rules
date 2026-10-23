@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidQuiz(data) {
+      return data.id is string && data.id.size() <= 128
+        && data.creatorName is string && data.creatorName.size() <= 100
+        && data.title is string && data.title.size() <= 200
+        && data.createdAt is number
+        && data.questions is list && data.questions.size() <= 50;
+    }
+
+    function isValidAttempt(data) {
+      return data.id is string && data.id.size() <= 128
+        && data.quizId is string && data.quizId.size() <= 128
+        && data.friendName is string && data.friendName.size() <= 100
+        && data.score is number && data.score >= 0
+        && data.total is number && data.total >= 0
+        && data.completedAt is number;
+    }
+
+    // Quizzes collection
+    match /quizzes/{quizId} {
+      allow read: if true;
+      allow create: if isValidId(quizId) && isValidQuiz(incoming());
+      allow update: if isValidId(quizId) && isValidQuiz(incoming());
+      allow delete: if isValidId(quizId);
+    }
+
+    // Attempts collection
+    match /attempts/{attemptId} {
+      allow read: if true;
+      allow create: if isValidId(attemptId) && isValidAttempt(incoming());
+      allow delete: if isValidId(attemptId);
+    }
+
+    // Default safety deny-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

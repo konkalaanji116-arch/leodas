@@ -1,0 +1,6 @@
+{
+  "name": "Thalapathy Vijay Fan Club & Friendship Quiz",
+  "description": "Mass Thalapathy Vijay themed personal 2-option friendship quiz builder and challenge game.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
